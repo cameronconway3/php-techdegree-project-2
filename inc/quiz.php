@@ -3,7 +3,8 @@
 session_start();
 
 // Include questions from the questions.php file
-include 'questions.php';
+// include 'questions.php';
+include 'generate_questions.php';
 
 // Make a variable to hold the total number of questions to ask
 $totalQuestions = count($questions);
@@ -29,7 +30,7 @@ $currentQuestion = null;
             1. Assign a bummer message to the toast variable.
 */
 if($_SERVER['REQUEST_METHOD'] === "POST") {
-    if($_POST['answer'] == $questions[$_POST['index']]['correctAnswer']) {
+    if($_POST['answer'] == $_SESSION['questions'][$_POST['index']]['correctAnswer']) {
         $toast = 'Well Done!';
         $_SESSION['totalCorrect']++;
     } else {
@@ -75,15 +76,16 @@ if(count($_SESSION['used_indexes']) == $totalQuestions) {
 } else {
     $show_score = false;
     if(count($_SESSION['used_indexes']) == 0) {
+        $_SESSION['questions'] = $questions;
         $_SESSION['totalCorrect'] = 0;
         $toast = '';
     }
 
     do {
-        $index = rand(0, count($questions) - 1);
+        $index = rand(0, count($_SESSION['questions']) - 1);
     } while (in_array($index, $_SESSION['used_indexes']));
 
-    $question = $questions[$index];
+    $question = $_SESSION['questions'][$index];
     array_push($_SESSION['used_indexes'], $index);
     $answers = array(
         $question['correctAnswer'],
