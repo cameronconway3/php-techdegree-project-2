@@ -1,8 +1,5 @@
 <?php 
 include './inc/quiz.php';
-// echo '<pre>';
-// var_dump($_SESSION['used_indexes']);
-// echo '</pre>';
 
 // Array of colours that work with white text
 $colours = array(
@@ -10,7 +7,6 @@ $colours = array(
     '#99446A', 
     '#610AA3', 
     '#3031B5', 
-    '#13B021', 
     '#0F9FA9', 
     '#012952', 
     '#4D2D7B', 
@@ -39,7 +35,6 @@ shuffle($colours);
 </head>
 <body>
     <div class="container">
-
         <div id="quiz-box">
 
             <?php
@@ -64,17 +59,22 @@ shuffle($colours);
                 }
             ?>
 
-
-            <p style="color: <?php echo $colours[3] ?>">
             <?php
                 if($show_score === true) {
-                    echo "You got " . $_SESSION['totalCorrect'] . " of " . $totalQuestions;
+                    ?> 
+                        <!-- Display Final Score -->
+                        <p style="color: <?php echo $colours[3] ?>"> <?php echo "You got " . $_SESSION['totalCorrect'] . " of " . $totalQuestions;?></p> 
+                        
+                        <!-- Option to play again -->
+                        <form action="index.php" method="post">
+                            <input type="submit" class="btn" name="restart" value="restart" />
+                        </form>
+                    
+                    <?php
                 }
             ?>
-            </p>
 
         </div>
-
     </div>
 </body>
 </html>

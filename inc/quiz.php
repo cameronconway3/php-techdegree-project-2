@@ -94,3 +94,10 @@ if(count($_SESSION['used_indexes']) == $totalQuestions) {
     );
     $shuffledAnswers = shuffle($answers);
 }
+
+// // Options to take the quiz more than once - Extra credit
+// if($_SERVER['REQUEST_METHOD'] === "POST") {
+//     if($_POST['restart'] == 'restart') {
+        
+//     }
+// }
