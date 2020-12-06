@@ -15,8 +15,6 @@ $toast = null;
 // Make a variable to determine if the score will be shown or not. Set it to false.
 $show_score = false;
 
-// Make a variable to hold a random index. Assign null to it.
-
 // Make a variable to hold the current question. Assign null to it.
 $currentQuestion = null;
 
@@ -94,10 +92,3 @@ if(count($_SESSION['used_indexes']) == $totalQuestions) {
     );
     $shuffledAnswers = shuffle($answers);
 }
-
-// // Options to take the quiz more than once - Extra credit
-// if($_SERVER['REQUEST_METHOD'] === "POST") {
-//     if($_POST['restart'] == 'restart') {
-        
-//     }
-// }
