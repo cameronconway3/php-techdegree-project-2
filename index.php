@@ -67,7 +67,7 @@ shuffle($colours);
                         
                         <!-- Option to play again -->
                         <form action="index.php" method="post">
-                            <input type="submit" class="btn" name="restart" value="restart" />
+                            <input type="submit" class="btn" name="restart" value="Restart" />
                         </form>
                     
                     <?php
